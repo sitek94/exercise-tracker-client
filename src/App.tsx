@@ -9,12 +9,6 @@ import NotFound from 'screens/not-found';
 import Home from 'screens/home';
 
 function App() {
-  React.useEffect(() => {
-    fetch('http://localhost:5000/api/exercise/users').then(res => {
-      console.log(res);
-    });
-  }, []);
-
   return (
     <div className="container">
       <h1>Exercise tracker</h1>
