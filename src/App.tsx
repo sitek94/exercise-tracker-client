@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 
+import NewUser from 'screens/new-user';
+import AddExercise from 'screens/add-exercise';
+import AllUsers from 'screens/all-users';
+import ExerciseLog from 'screens/exercise-log';
+
 function App() {
   React.useEffect(() => {
     fetch('http://localhost:5000/api/exercise/users').then(res => {
@@ -27,38 +32,6 @@ function App() {
         </Routes>
       </main>
     </div>
-  );
-}
-
-function NewUser() {
-  return (
-    <section>
-      <h2>New User</h2>
-    </section>
-  );
-}
-
-function AddExercise() {
-  return (
-    <section>
-      <h2>Add Exercise</h2>
-    </section>
-  );
-}
-
-function AllUsers() {
-  return (
-    <section>
-      <h2>All Users</h2>
-    </section>
-  );
-}
-
-function ExerciseLog() {
-  return (
-    <section>
-      <h2>Exercise Log</h2>
-    </section>
   );
 }
 
