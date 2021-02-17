@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 
 function App() {
   React.useEffect(() => {
@@ -11,17 +12,19 @@ function App() {
     <div className="container">
       <h1>Exercise tracker</h1>
       <nav>
-        <a href="#new-user">New user</a>
-        <a href="#add-exercise">Add exercise</a>
-        <a href="#users">All users</a>
-        <a href="#log">Exercise log</a>
+        <Link to="/new-user">New user</Link>
+        <Link to="/add-exercise">Add exercise</Link>
+        <Link to="/users">All users</Link>
+        <Link to="/log">Exercise log</Link>
       </nav>
 
       <main>
-        <NewUser />
-        <AddExercise />
-        <AllUsers />
-        <ExerciseLog />
+        <Routes>
+          <Route path="/new-user" element={<NewUser />} />
+          <Route path="/add-exercise" element={<AddExercise />} />
+          <Route path="/users" element={<AllUsers />} />
+          <Route path="/log" element={<ExerciseLog />} />
+        </Routes>
       </main>
     </div>
   );
