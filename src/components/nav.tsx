@@ -40,13 +40,13 @@ function NavItemLink({ label, to }: NavItemLinkProps) {
       component={RouterLink}
       to={to}
       sx={{
+        px: 2,
+        flex: 1,
         alignSelf: 'stretch',
         borderRadius: '0 !important',
         borderBottom: matches
           ? `2px solid ${theme.palette.common.white}`
           : undefined,
-        px: 2,
-        flex: 1,
       }}
     >
       {label}

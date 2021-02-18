@@ -17,8 +17,8 @@ function App() {
       <Nav>
         <NavItemLink label="Home" to="/" />
         <NavItemLink label="New user" to="/new-user" />
-        <NavItemLink label="Add exercise" to="/add-exercise" />
         <NavItemLink label="All users" to="/users" />
+        <NavItemLink label="Add exercise" to="/add-exercise" />
         <NavItemLink label="Exercise log" to="/log" />
       </Nav>
       <Toolbar />
