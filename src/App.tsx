@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+
+import { Container, Toolbar } from '@material-ui/core';
+import { Nav, NavItemLink } from 'components/nav';
 
 import NewUser from 'screens/new-user';
 import AddExercise from 'screens/add-exercise';
@@ -10,15 +13,15 @@ import Home from 'screens/home';
 
 function App() {
   return (
-    <div className="container">
-      <h1>Exercise tracker</h1>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/new-user">New user</Link>
-        <Link to="/add-exercise">Add exercise</Link>
-        <Link to="/users">All users</Link>
-        <Link to="/log">Exercise log</Link>
-      </nav>
+    <Container maxWidth="md">
+      <Nav>
+        <NavItemLink label="Home" to="/" />
+        <NavItemLink label="New user" to="/new-user" />
+        <NavItemLink label="Add exercise" to="/add-exercise" />
+        <NavItemLink label="All users" to="/users" />
+        <NavItemLink label="Exercise log" to="/log" />
+      </Nav>
+      <Toolbar />
 
       <main>
         <Routes>
@@ -30,7 +33,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-    </div>
+    </Container>
   );
 }
 
