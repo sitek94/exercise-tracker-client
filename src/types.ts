@@ -27,3 +27,23 @@ export interface NewExerciseResponse {
   duration: ExerciseDescription;
   date: ExerciseDate;
 }
+
+export interface LogQuery {
+  userId: UserId;
+  from?: string;
+  to?: string;
+  limit?: number;
+}
+
+interface LogItem {
+  description: ExerciseDescription;
+  duration: ExerciseDuration;
+  date: ExerciseDate;
+}
+
+export interface LogQueryResponse {
+  _id: UserId;
+  username: Username;
+  count: number;
+  log: LogItem[];
+}

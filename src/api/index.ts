@@ -1,5 +1,11 @@
 import axios from 'axios';
-import { NewExercise, NewExerciseResponse } from 'types';
+import {
+  NewExercise,
+  NewExerciseResponse,
+  UserList,
+  LogQuery,
+  LogQueryResponse,
+} from 'types';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -10,7 +16,8 @@ export default api;
 export async function getAllUsers() {
   try {
     const response = await api.get('/users');
-    return response.data;
+    const userList: UserList = response.data;
+    return userList;
   } catch (error) {
     throw error;
   }
@@ -26,9 +33,32 @@ export async function postAddExercise(newExercise: NewExercise) {
       duration,
       date,
     });
-    const data: NewExerciseResponse = response.data;
-    return data;
+    const newExerciseResponse: NewExerciseResponse = response.data;
+    return newExerciseResponse;
   } catch (error) {
+    console.log(error.response);
+    throw error;
+  }
+}
+
+export async function getExerciseLog(query: LogQuery) {
+  try {
+    const { userId, from, to, limit } = query;
+
+    const response = await api.get('log', {
+      params: {
+        userId,
+        from,
+        to,
+        limit,
+      },
+    });
+
+    const log: LogQueryResponse = response.data;
+
+    return log;
+  } catch (error) {
+    
     throw error;
   }
 }
