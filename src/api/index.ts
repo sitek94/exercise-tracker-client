@@ -5,6 +5,8 @@ import {
   UserList,
   LogQuery,
   LogQueryResponse,
+  Username,
+  User,
 } from 'types';
 
 const api = axios.create({
@@ -13,10 +15,26 @@ const api = axios.create({
 
 export default api;
 
+export async function postNewUser(username: Username) {
+  try {
+    const response = await api.post('/new-user', {
+      username,
+    });
+
+    const user: User = response.data;
+
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getAllUsers() {
   try {
     const response = await api.get('/users');
+
     const userList: UserList = response.data;
+
     return userList;
   } catch (error) {
     throw error;
@@ -33,10 +51,11 @@ export async function postAddExercise(newExercise: NewExercise) {
       duration,
       date,
     });
+
     const newExerciseResponse: NewExerciseResponse = response.data;
+
     return newExerciseResponse;
   } catch (error) {
-    console.log(error.response);
     throw error;
   }
 }
@@ -58,7 +77,6 @@ export async function getExerciseLog(query: LogQuery) {
 
     return log;
   } catch (error) {
-    
     throw error;
   }
 }

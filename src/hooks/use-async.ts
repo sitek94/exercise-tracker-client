@@ -26,11 +26,17 @@ export default function useAsync<T, E = string>(
       });
   }, [asyncFunction]);
 
+  const reset = React.useCallback(() => {
+    setStatus('idle');
+    setValue(null);
+    setError(null);
+  }, []);
+
   React.useEffect(() => {
     if (immediate) {
       execute();
     }
   }, [execute, immediate]);
 
-  return { execute, status, value, error };
+  return { execute, reset, status, value, error };
 }
