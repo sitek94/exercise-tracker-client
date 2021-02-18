@@ -3,6 +3,9 @@ import useAsync from 'hooks/use-async';
 import { postNewUser } from 'api';
 import { AxiosError } from 'axios';
 import { User } from 'types';
+import { Title } from 'components/title';
+import { Alert, TextField } from '@material-ui/core';
+import { LoadingButton } from '@material-ui/lab';
 
 export default function NewUser() {
   const [username, setUsername] = React.useState('');
@@ -21,35 +24,36 @@ export default function NewUser() {
   };
 
   return (
-    <section>
-      <h2>Create a New User</h2>
+    <>
+      <Title>Create New User</Title>
       {status === 'error' && (
-        <div style={{ backgroundColor: 'red', color: 'white' }}>
-          <p>Error: {error?.response?.data?.error || error?.message}</p>
-        </div>
+        <Alert variant="filled" severity="warning">
+          Oppps:
+          {error?.response?.data?.error || error?.message}
+        </Alert>
       )}
-      {status === 'success' ? (
-        <div>
-          <div style={{ backgroundColor: 'green', color: 'white' }}>
-            <p>Success: new user created!</p>
-          </div>
-          <pre>{JSON.stringify(value, null, 2)}</pre>
-          <button onClick={reset}>Add new user</button>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Username</label>
-            <input
-              value={username}
-              onChange={e => setUsername(e.currentTarget.value)}
-            />
-          </div>
-          <button type="submit" disabled={status === 'pending'}>
-            {status === 'pending' ? 'Loading...' : 'Submit'}
-          </button>
-        </form>
+      {status === 'success' && (
+        <Alert variant="filled" severity="success">
+          The user has been created successfully!
+        </Alert>
       )}
-    </section>
+      <form onSubmit={handleSubmit}>
+        <TextField
+          id="username"
+          placeholder="johny_bravo_2000"
+          value={username}
+          onChange={e => setUsername(e.currentTarget.value)}
+          fullWidth
+          sx={{ mb: 2 }}
+        />
+        <LoadingButton
+          variant="contained"
+          type="submit"
+          pending={status === 'pending'}
+        >
+          Submit
+        </LoadingButton>
+      </form>
+    </>
   );
 }
