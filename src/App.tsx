@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { Container, Toolbar } from '@material-ui/core';
 import { Nav, NavItemLink } from 'components/nav';
+import { Layout, Content } from 'components/layout';
 
 import NewUser from 'screens/new-user';
 import AddExercise from 'screens/add-exercise';
@@ -13,7 +13,7 @@ import Home from 'screens/home';
 
 function App() {
   return (
-    <Container maxWidth="md">
+    <Layout>
       <Nav>
         <NavItemLink label="Home" to="/" />
         <NavItemLink label="New user" to="/new-user" />
@@ -21,9 +21,8 @@ function App() {
         <NavItemLink label="Add exercise" to="/add-exercise" />
         <NavItemLink label="Exercise log" to="/log" />
       </Nav>
-      <Toolbar />
 
-      <main>
+      <Content>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/new-user" element={<NewUser />} />
@@ -32,8 +31,8 @@ function App() {
           <Route path="/log" element={<ExerciseLog />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </main>
-    </Container>
+      </Content>
+    </Layout>
   );
 }
 
