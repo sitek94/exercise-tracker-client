@@ -1,4 +1,4 @@
-import { Box, Container, Paper, Toolbar } from '@material-ui/core';
+import { Box, Container, useTheme } from '@material-ui/core';
 
 interface LayoutProps {
   children?: React.ReactNode;
@@ -17,11 +17,19 @@ interface ContentProps {
 }
 
 function Content({ children }: ContentProps) {
+  const theme = useTheme();
+
   return (
-    <Paper component="main" square sx={{ height: '100%' }}>
-      <Toolbar />
-      <Box sx={{ py: 12, px: 22 }}>{children}</Box>
-    </Paper>
+    <Box
+      component="main"
+      sx={{
+        height: '100%',
+        // Toolbar spacer
+        paddingTop: theme.mixins.toolbar.minHeight + 'px',
+      }}
+    >
+      {children}
+    </Box>
   );
 }
 
