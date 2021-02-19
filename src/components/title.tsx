@@ -6,7 +6,7 @@ interface Props {
 
 function Title({ children }: Props) {
   return (
-    <Typography variant="h3" component="h1" align="center" gutterBottom>
+    <Typography variant="h5" component="h1" align="center">
       {children}
     </Typography>
   );
