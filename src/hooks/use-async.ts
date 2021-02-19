@@ -2,7 +2,7 @@ import * as React from 'react';
 
 type Status = 'idle' | 'pending' | 'error' | 'success';
 
-export default function useAsync<T, E = string>(
+export function useAsync<T, E = string>(
   asyncFunction: () => Promise<T>,
   immediate = true,
 ) {

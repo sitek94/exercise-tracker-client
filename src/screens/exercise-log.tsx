@@ -1,5 +1,5 @@
 import * as React from 'react';
-import useAsync from 'hooks/use-async';
+import { useAsync } from 'hooks/use-async';
 import { getExerciseLog } from 'api';
 import { LogQueryResponse } from 'types';
 import { AxiosError } from 'axios';

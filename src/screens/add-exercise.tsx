@@ -1,5 +1,5 @@
 import * as React from 'react';
-import useAsync from 'hooks/use-async';
+import { useAsync } from 'hooks/use-async';
 import { postAddExercise } from 'api';
 import { NewExerciseResponse } from 'types';
 import { formatDate } from 'utils';
